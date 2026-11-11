@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GENESIS construction, architecture, engineering, planning and development services." />
+  <title>Services — GENESIS Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d10;
+      --panel: #10191d;
+      --panel-2: #142126;
+      --text: #f2f5f3;
+      --muted: #9aa7a8;
+      --line: rgba(220, 238, 232, .13);
+      --lime: #c7ff36;
+      --lime-dark: #a9df20;
+      --max: 1320px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 64px)); margin: 0 auto; }
+    .site-header {
+      height: 88px; display: flex; align-items: center;
+      border-bottom: 1px solid var(--line); position: relative; z-index: 5;
+      background: rgba(8, 13, 16, .88);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font: 700 21px "Space Grotesk", sans-serif; letter-spacing: 2px; }
+    .brand-mark {
+      width: 33px; height: 33px; display: grid; place-items: center;
+      background: var(--lime); color: #0a1112; font-size: 19px; font-weight: 700;
+      clip-path: polygon(0 0,100% 0,100% 78%,78% 100%,0 100%);
+    }
+    .brand-slash { color: var(--lime); font-size: 25px; margin-left: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 38px; }
+    .nav-links a { color: #c1cbca; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--lime); }
+    .nav-cta {
+      border: 1px solid rgba(235,245,240,.35); padding: 14px 20px;
+      font-size: 10px; letter-spacing: 1.3px; text-transform: uppercase;
+      transition: .25s;
+    }
+    .nav-cta:hover { background: var(--lime); border-color: var(--lime); color: #0a1112; }
+    .menu-note { display: none; }
+
+    .hero {
+      min-height: 510px; position: relative; display: flex; align-items: center;
+      isolation: isolate; overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(7,12,15,.98) 0%, rgba(7,12,15,.91) 42%, rgba(7,12,15,.42) 100%),
+        linear-gradient(0deg, rgba(7,12,15,.3), rgba(7,12,15,.3)),
+        url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=85") center 47%/cover;
+    }
+    .hero::before {
+      content: ""; position: absolute; width: 590px; height: 590px; border: 1px solid rgba(199,255,54,.15);
+      border-radius: 50%; right: 5%; top: -95px; z-index: -1;
+      box-shadow: 0 0 0 55px rgba(199,255,54,.018), 0 0 0 110px rgba(199,255,54,.014);
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 190px; height: 7px; background: var(--lime);
+      right: 18%; top: 27%; transform: rotate(2deg); opacity: .85;
+    }
+    .hero-content { padding: 90px 0 82px; max-width: 780px; }
+    .eyebrow { color: var(--lime); font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; }
+    .eyebrow::before { content: ""; display: inline-block; width: 32px; height: 1px; background: var(--lime); vertical-align: middle; margin: 0 15px 3px 0; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 600 clamp(54px, 7.5vw, 100px)/.98 "Space Grotesk", sans-serif; letter-spacing: -5px; margin: 27px 0 24px; }
+    h1 span { color: var(--lime); }
+    .hero-copy { max-width: 560px; color: #b9c3c2; font-size: 16px; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 14px; margin-top: 32px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 20px; padding: 17px 22px; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; transition: .25s; }
+    .btn-primary { color: #0a1112; background: var(--lime); }
+    .btn-primary:hover { background: #e0ff91; transform: translateY(-2px); }
+    .btn-outline { border: 1px solid rgba(235,245,240,.35); color: var(--text); }
+    .btn-outline:hover { border-color: var(--lime); color: var(--lime); }
+    .hero-index { position: absolute; right: max(32px, calc((100% - var(--max))/2)); bottom: 36px; color: var(--lime); font: 600 11px "Space Grotesk"; letter-spacing: 2px; }
+
+    .intro { padding: 105px 0 42px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .section-kicker { color: var(--lime); font-size: 10px; letter-spacing: 2.5px; font-weight: 700; text-transform: uppercase; }
+    .intro h2 { font: 600 clamp(34px, 4vw, 55px)/1.08 "Space Grotesk", sans-serif; letter-spacing: -2px; margin: 18px 0 0; max-width: 590px; }
+    .intro h2 span { color: var(--lime); }
+    .intro-copy { color: var(--muted); line-height: 1.85; font-size: 14px; max-width: 500px; margin: 0 0 4px; }
+
+    .services { padding: 30px 0 110px; }
+    .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .service-card {
+      min-height: 350px; position: relative; overflow: hidden; padding: 27px;
+      background: linear-gradient(145deg, rgba(20,33,38,.98), rgba(12,20,24,.98));
+      border: 1px solid var(--line); transition: transform .3s, border-color .3s;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: rgba(199,255,54,.6); }
+    .service-card::after {
+      content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(199,255,54,.11);
+      border-radius: 50%; right: -70px; top: -70px; box-shadow: 0 0 0 25px rgba(199,255,54,.025), 0 0 0 50px rgba(199,255,54,.018);
+      pointer-events: none;
+    }
+    .service-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+    .service-number { color: var(--lime); font: 500 12px "Space Grotesk"; letter-spacing: 1px; }
+    .service-icon { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid rgba(199,255,54,.35); color: var(--lime); font-size: 22px; }
+    .service-card h3 { font: 600 25px/1.15 "Space Grotesk", sans-serif; margin: 0 0 12px; max-width: 270px; }
+    .service-card p { color: var(--muted); font-size: 13px; line-height: 1.75; max-width: 330px; margin: 0; }
+    .service-bottom { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 30px; position: relative; z-index: 1; }
+    .learn { color: var(--lime); font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; }
+    .arrow { color: var(--lime); font-size: 20px; transition: transform .2s; }
+    .service-card:hover .arrow { transform: translate(4px,-4px); }
+
+    .process { padding: 85px 0; background: #0d1519; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .process-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 48px; }
+    .process h2 { font: 600 clamp(34px,4vw,52px)/1.05 "Space Grotesk"; letter-spacing: -2px; margin: 15px 0 0; }
+    .process h2 span { color: var(--lime); }
+    .process-head p { color: var(--muted); max-width: 390px; line-height: 1.8; font-size: 13px; margin: 0; }
+    .steps { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); }
+    .step { padding: 27px 24px 0 0; }
+    .step-num { color: var(--lime); font: 600 13px "Space Grotesk"; }
+    .step h3 { font: 600 19px "Space Grotesk"; margin: 22px 0 9px; }
+    .step p { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 0; max-width: 240px; }
+
+    .cta { padding: 95px 0; }
+    .cta-panel {
+      padding: 60px; display: flex; align-items: center; justify-content: space-between; gap: 35px;
+      background: linear-gradient(110deg, rgba(199,255,54,.12), rgba(16,25,29,.96) 55%), #10191d;
+      border: 1px solid rgba(199,255,54,.25); position: relative; overflow: hidden;
+    }
+    .cta-panel::after { content: "G"; position: absolute; right: 22%; top: -100px; color: rgba(199,255,54,.045); font: 700 330px "Space Grotesk"; pointer-events: none; }
+    .cta h2 { font: 600 clamp(32px,4vw,50px)/1.05 "Space Grotesk"; letter-spacing: -2px; margin: 15px 0 12px; position: relative; z-index: 1; }
+    .cta p { color: var(--muted); font-size: 13px; margin: 0; position: relative; z-index: 1; }
+    .cta .btn { flex-shrink: 0; position: relative; z-index: 1; }
+    footer { border-top: 1px solid var(--line); padding: 27px 0; color: #7f8c8d; font-size: 10px; letter-spacing: 1px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-row strong { color: var(--text); font-family: "Space Grotesk"; letter-spacing: 2px; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 18px; }
+      .intro { gap: 35px; }
+      .service-grid { grid-template-columns: repeat(2,1fr); }
+      .cta-panel { padding: 42px; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 38px, var(--max)); }
+      .site-header { height: 72px; }
+      .nav-links { display: none; }
+      .nav-cta { padding: 12px 13px; font-size: 9px; }
+      .brand { font-size: 18px; }
+      .hero { min-height: 570px; background-position: 58% center; }
+      .hero-content { padding: 85px 0 100px; }
+      h1 { font-size: clamp(52px, 15vw, 76px); letter-spacing: -3px; }
+      .hero-copy { font-size: 14px; }
+      .hero-index { right: 20px; bottom: 22px; }
+      .intro { grid-template-columns: 1fr; gap: 20px; padding: 75px 0 30px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 300px; }
+      .process { padding: 70px 0; }
+      .process-head { display: block; }
+      .process-head p { margin-top: 20px; }
+      .steps { grid-template-columns: repeat(2,1fr); row-gap: 28px; }
+      .step { padding-right: 12px; }
+      .cta { padding: 65px 0; }
+      .cta-panel { padding: 32px 24px; display: block; }
+      .cta .btn { margin-top: 27px; }
+      .cta-panel::after { right: -20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="GENESIS home">
+        <span class="brand-mark">G</span><span>GENESIS</span><span class="brand-slash">/</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a class="active" href="services.html">Services</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="index.html#contact">Let's Build ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">What we do · How we build</div>
+          <h1>Expertise that<br>builds <span>the future.</span></h1>
+          <p class="hero-copy">From the first sketch to the final structure, GENESIS brings planning, design and construction together to turn ambitious ideas into lasting spaces.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#our-services">Explore services <span>↗</span></a>
+            <a class="btn btn-outline" href="index.html#contact">Discuss a project</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-index">01 / OUR SERVICES</div>
+    </section>
+
+    <section class="container intro" id="our-services">
+      <div>
+        <div class="section-kicker">Our capabilities</div>
+        <h2>One team. Complete expertise. <span>Better outcomes.</span></h2>
+      </div>
+      <p class="intro-copy">We provide integrated professional services across the built environment. Our team combines technical knowledge, practical experience and a detail-focused approach at every stage of a project.</p>
+    </section>
+
+    <section class="container services">
+      <div class="service-grid">
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">01 / DESIGN</span><span class="service-icon">⌂</span></div>
+          <div><h3>Architectural Design</h3><p>Creative, functional and thoughtful building design shaped around your vision, site and lifestyle.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">02 / ENGINEERING</span><span class="service-icon">⌁</span></div>
+          <div><h3>Engineering Consultancy</h3><p>Reliable engineering solutions, technical planning and coordination to support safe, efficient construction.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">03 / PLANNING</span><span class="service-icon">▦</span></div>
+          <div><h3>Town Planning</h3><p>Strategic land-use planning and development layouts that balance community needs, infrastructure and growth.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">04 / VALUATION</span><span class="service-icon">⌖</span></div>
+          <div><h3>Valuation Consultancy</h3><p>Clear, considered property valuation support to help inform investment, acquisition and development decisions.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">05 / PROPERTY</span><span class="service-icon">▤</span></div>
+          <div><h3>Real Estate & Investment</h3><p>Property advisory and investment guidance focused on opportunity, value and long-term potential.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">06 / DEVELOPMENT</span><span class="service-icon">⌑</span></div>
+          <div><h3>Builder & Developer</h3><p>End-to-end development support, bringing people, resources and delivery together to make projects real.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">07 / EXECUTION</span><span class="service-icon">▧</span></div>
+          <div><h3>Construction Contractor</h3><p>Disciplined on-site execution with a focus on workmanship, coordination, timelines and quality.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">08 / TRANSFORMATION</span><span class="service-icon">✳</span></div>
+          <div><h3>Renovation & Remodeling</h3><p>Thoughtful upgrades and transformations that refresh existing spaces and improve how they work.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+        <article class="service-card">
+          <div class="service-top"><span class="service-number">09 / PUBLIC SECTOR</span><span class="service-icon">▥</span></div>
+          <div><h3>Government Contracting</h3><p>Professional project delivery and contracting services for public-sector works and infrastructure needs.</p><div class="service-bottom"><a class="learn" href="index.html#contact">Explore service</a><span class="arrow">↗</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="container">
+        <div class="process-head">
+          <div><div class="section-kicker">Our approach</div><h2>From vision to <span>reality.</span></h2></div>
+          <p>A clear process keeps every decision connected, every detail considered and every project moving in the right direction.</p>
+        </div>
+        <div class="steps">
+          <div class="step"><span class="step-num">01</span><h3>Discover</h3><p>We understand your goals, requirements, site and project priorities.</p></div>
+          <div class="step"><span class="step-num">02</span><h3>Plan</h3><p>We develop the right strategy, design direction and technical roadmap.</p></div>
+          <div class="step"><span class="step-num">03</span><h3>Deliver</h3><p>Our team coordinates the work with attention to quality and detail.</p></div>
+          <div class="step"><span class="step-num">04</span><h3>Complete</h3><p>We work toward a considered result built to perform over time.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container cta">
+      <div class="cta-panel">
+        <div><div class="section-kicker">Have a project in mind?</div><h2>Let's build something<br><span style="color:var(--lime)">remarkable.</span></h2><p>Tell us what you're planning. We'll help you take the next step.</p></div>
+        <a class="btn btn-primary" href="index.html#contact">Start a conversation <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <strong>GENESIS /</strong>
+      <span>© 2026 GENESIS CONSTRUCTION. ALL RIGHTS RESERVED.</span>
+      <span>BUILT FOR WHAT'S NEXT.</span>
+    </div>
+  </footer>
+</body>
+</html>
